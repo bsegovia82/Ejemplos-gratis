@@ -1,0 +1,13 @@
+create or replace procedure test(pv_nombre varchar2, pv_mensaje_salida out varchar2) is
+begin
+  
+
+       insert into on_data (nombre, fecha_registro) values (pv_nombre, sysdate);
+       
+       pv_mensaje_salida := 'Transaccion Exitosa';
+
+exception
+  when others then
+            pv_mensaje_salida:= 'ERROR ' || sqlerrm;  
+
+end test;
